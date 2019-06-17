@@ -1,3 +1,29 @@
 page-home {
-
+    .card {
+        margin: 0px;
+        width: 100%;
+    }
+    ion-card-header {
+        border-bottom: 1px solid #ccc;
+    }
+    .left{
+        float: left;
+    }
+    .right{
+        float: right;
+    }
+    #tabs .toolbar-background-md {
+        background-color: #000;
+        color: #fff;
+    }
+    .address-text{
+        text-align: center;
+        font-size: 20px;
+    }
+    .watch-text{
+        font-size: 18px;
+    }
+    .select{
+        max-width: 100% !important;
+    }
 }
