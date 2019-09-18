@@ -1,0 +1,124 @@
+<ion-content padding class="marco1">
+  <ion-grid style="margin-bottom: 35px;">
+    <p style="margin: 10px 0px; color: #fff; font-size: 25px; font-weight: bold; text-align: center">
+      GPS Notificaciones
+    </p>
+    <img style="height: 50px;width: 50px;margin: auto;" src="/assets/imgs/logopj3.png" alt="">
+  </ion-grid>
+
+  <ion-card>
+    <ion-card-header >
+      <ion-card-title>1. Cédula de Notificación</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label><ion-icon name="nbarcode"></ion-icon></ion-label>
+        <ion-input type="text" [(ngModel)]="nbarcode" name="title" (keyup)="checkInput($event)"></ion-input>
+      </ion-item>
+      <ion-item> 
+        <button class="left" ion-button color="primary" (click)=scan()>Escanear  <ion-icon name="qr-scanner"></ion-icon></button>
+        <button class="right" ion-button color="secondary" [disabled]="!nbarcode" (click)=search(nbarcode)>Buscar  <ion-icon name="search"></ion-icon></button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card><br>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Datos de la Cédula</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label class="lblCed">Expediente:</ion-label>
+            <!-- <ion-label>{{expediente}}</ion-label> -->
+            <ion-input type="text" [(ngModel)]="expediente" readonly="true" style="font-weight: bold; font-size: 15px; border: 1px solid #ccc"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label class="lblCed">Juzgado:</ion-label>
+            <!-- <ion-label>{{juzgado}}</ion-label> -->
+            <ion-input type="text" [(ngModel)]="juzgado" readonly="true" style="font-weight: bold; font-size: 15px; border: 1px solid #ccc"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label class="lblCed">Cédula:</ion-label>
+            <!-- <ion-label>{{cedula}}</ion-label> -->
+            <ion-input type="text" [(ngModel)]="cedula" readonly="true" style="font-weight: bold; font-size: 15px; border: 1px solid #ccc"></ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card><br>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>2. Notificación</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+          <ion-row>
+            <ion-col>
+              <!-- <ion-label>Tipo de diligencia</ion-label> -->
+              <ion-select [disabled]="!flag" class="select" placeholder="Seleccione un Tipo de Diligencia" [(ngModel)]="formRegister.tbldiligencia_id">
+                <ion-option *ngFor="let diligencia of diligencias" [value]="diligencia.value">{{ diligencia.name }}</ion-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <!-- <ion-label>Tipo de motivo</ion-label> -->
+              <ion-select [disabled]="!flag" class="select" placeholder="Seleccione un Motivo" [(ngModel)]="formRegister.tblmotivo_id">
+                <ion-option *ngFor="let motivo of motivos" [value]="motivo.value">{{ motivo.name }}</ion-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card><br>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>3. Fotografía</ion-card-title>
+    </ion-card-header>
+    <br>
+    <ion-card-content style=" text-align: center;">
+      <button [disabled]="!flag" ion-button (click)="takePhoto()">Tomar captura <ion-icon name="camera"></ion-icon></button> 
+      <button color="secondary" ion-button (click)="getImage()">Seleccionar foto <ion-icon name="folder"></ion-icon></button> 
+      <button color="danger" ion-button (click)="cropImage()">Recortar foto <ion-icon name="crop"></ion-icon></button> 
+      <p center style="margin-top: 15px"><img [hidden]="!myphoto" [src]="myphoto"></p>
+    </ion-card-content>
+  </ion-card><br> 
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>4. Ubicación</ion-card-title>
+    </ion-card-header>
+    <br>
+    <ion-card-content style=" text-align: center;">
+      <button [disabled]="!flag" ion-button (click)="getGeolocation()">Obtener posición<ion-icon name="locate"></ion-icon></button>
+      <!-- <button ion-button (click)="watchLocation()">Watch Location Updates</button>
+      <button ion-button (click)="stopLocationWatch()">Stop Location Watch</button> -->
+      <div *ngIf="geoLatitude">
+        <p>Latitud : {{geoLatitude}}</p>
+        <p>Longitud : {{geoLongitude}}</p>
+        <p>Precisión : {{geoAccuracy}}</p>
+        <p class="address-text">
+          <span class="watch-text" *ngIf="isWatching; else notWatching">
+            Rastreando posición
+          </span>
+          <ng-template #notWatching>
+            Rastreo detenido
+          </ng-template>
+          <br>Dirección : {{geoAddress }}
+        </p>
+      </div>
+    </ion-card-content>
+  </ion-card><br>
+
+  <button [disabled]="!flag" ion-button block (click)="uploadFile()" color="warning"> Subir Foto<ion-icon name="cloud-upload"></ion-icon></button> 
+  <button [disabled]="!img" ion-button block (click)="uploadData()" color="secondary"> Subir Información<ion-icon name="cloud-upload"></ion-icon></button> 
+
+</ion-content>

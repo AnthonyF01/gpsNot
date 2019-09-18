@@ -1,0 +1,12 @@
+<ion-content padding class="getStart">
+  <!-- <ion-grid class="center">
+    <ion-icon class="logo_menu" name="navigate"></ion-icon>
+    <img style="margin: auto" height="100px" width="100px" src="/assets/imgs/icon-navigate.png" alt="">
+  </ion-grid> --> 
+  <img style="float: right; position: relative; top: 15vh; right: 12vh" height="150px" width="auto" src="assets/imgs/ncpp.png" alt="">
+  <ion-grid style="position: relative;top: 27vh;">
+    <ion-input type="text" [(ngModel)]="formLogin.name" maxLength="100" placeholder="user@pj.gob.pe" style="border-top-right-radius: 50px; font-size: 20px; width: 80%; border: 1px solid #ccc"></ion-input>
+    <ion-input type="password" [(ngModel)]="formLogin.password" maxLength="100" placeholder="********" style="border-bottom-right-radius: 50px; font-size: 20px; width: 80%; border: 1px solid #ccc"></ion-input>
+    <img (click)="login(formLogin)" style="position: fixed;margin-top: 20px;margin-left: 65%;" height="65px" width="65px" src="assets/imgs/boton.png" alt="">
+  </ion-grid>
+</ion-content>

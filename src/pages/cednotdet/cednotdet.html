@@ -1,0 +1,51 @@
+<ion-content padding class="marco1">
+  <ion-grid style="margin-bottom: 35px;">
+    <p style="margin: 10px 0px; color: #fff; font-size: 25px; font-weight: bold; text-align: center">
+      Cédulas Notificadas
+    </p>
+    <img style="height: 50px;width: 50px;margin: auto;" src="/assets/imgs/logopj3.png" alt="">
+  </ion-grid>
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+        <p style="margin: 0px; color: #911206; font-size: calc(16px + 1vw); line-height: calc(16px + 1vw); font-weight: bold; text-align: center">
+          PODER JUDICIAL DEL PERU
+        </p>
+        <p style="margin: 0px; color: #911206; font-size: calc(13px + 1vw); line-height: calc(13px + 1vw); text-align: center">
+          CORTE SUPERIOR DE JUSTICIA
+        </p>
+        <p style="margin: 0px; color: #911206; font-size: calc(13px + 1vw); line-height: calc(13px + 1vw); font-weight: bold; text-align: center">
+          Ventanilla
+        </p>
+      </ion-grid>
+      <ion-grid>
+        <p style="margin: 0px; color: #911206; font-size: calc(10px + 1vw); line-height: calc(10px + 1vw); text-align: center">
+          Sede Salas y Juzgados Penales
+        </p>
+        <p style="margin: 0px; color: #911206; font-size: calc(10px + 1vw); line-height: calc(10px + 1vw); text-align: center">
+          Notificación Nº: {{ced}}
+        </p>
+        <p style="margin: 0px; color: #911206; font-size: calc(10px + 1vw); line-height: calc(10px + 1vw); text-align: center">
+          Expediente: {{exp}}
+        </p>
+        <p style="margin: 0px; color: #911206; font-size: calc(10px + 1vw); line-height: calc(10px + 1vw); text-align: center">
+          {{juz}}
+        </p>
+      </ion-grid>
+      <ion-grid style="max-height: 130px;height: 130px;width: auto;vertical-align: middle;overflow: hidden;margin: 0;">
+        <!-- <img src="/assets/imgs/fachada.png" alt=""> -->
+        <img [src]="url" alt="">
+      </ion-grid>
+      <ion-grid>
+        <!-- <img src="/assets/imgs/mapa.png" alt=""> -->
+        <div #map id="map" style="max-height: 130px;height: 130px; background: inherit;"></div>
+      </ion-grid>
+      <ion-grid>
+        <p style="margin: 0px; color: #000; font-size: calc(7px + 1vw); line-height: calc(10px + 1vw); text-align: left">
+          <b>Fecha y hora:</b> {{fhr}}
+        </p>
+      </ion-grid>
+      <button center (click)=close() ion-button color="default">Cerrar <ion-icon name="close"></ion-icon></button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

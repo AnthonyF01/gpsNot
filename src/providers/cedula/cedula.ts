@@ -4,10 +4,15 @@ import { Storage } from '@ionic/storage';
 
 import { Service } from '../../settings/Laravel';
 
+import { AuthProvider } from '../auth/auth';
+
 @Injectable()
 export class CedulaProvider {
 
-  constructor(public http: HttpClient, private storage: Storage) {
+  constructor(
+    public http: HttpClient, 
+    private storage: Storage,
+    private authService: AuthProvider) {
   }
 
   /*async findExpediente (search:string, param:boolean) 
@@ -47,12 +52,45 @@ export class CedulaProvider {
 
   async getDiligencia () 
   {
-    return this.http.get(`${Service.apiUrl}/getDiligencia`).toPromise()
+    let auth: any = await this.storage.get('auth');
+    let headers: HttpHeaders = new HttpHeaders({
+      'Authorization': `Bearer ${auth.access_token}`,
+    })
+    return this.http.get(`${Service.apiUrl}/getDiligencia`, { headers }).toPromise()
   }
 
   async getMotivo () 
   {
-    return this.http.get(`${Service.apiUrl}/getMotivo`).toPromise()
+    let auth: any = await this.storage.get('auth');
+    let headers: HttpHeaders = new HttpHeaders({
+      'Authorization': `Bearer ${auth.access_token}`,
+    })
+    return this.http.get(`${Service.apiUrl}/getMotivo`, { headers }).toPromise()
+  }
+
+  async barcodeInfo (code) {
+    let auth: any = await this.storage.get('auth');
+    let headers: HttpHeaders = new HttpHeaders({
+      'Authorization': `Bearer ${auth.access_token}`,
+    })
+    return this.http.get(`${Service.apiUrl}/barcodeInfo/`+code, { headers }).toPromise()
+  }
+
+  async findNot (nronot) {
+    let auth: any = await this.storage.get('auth');
+    let headers: HttpHeaders = new HttpHeaders({
+      'Authorization': `Bearer ${auth.access_token}`,
+    })
+    return this.http.get(`${Service.apiUrl}/findNot/`+nronot, { headers }).toPromise()
+  }
+
+  async uploadData(data:any) {
+    let accessToken: any = await this.authService.getAccessToken();
+    let headers: HttpHeaders = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`,
+    });
+    return this.http.post(`${Service.apiUrl}/uploadData`, data, { headers }).toPromise();
   }
 
 }

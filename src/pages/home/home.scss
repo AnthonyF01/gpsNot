@@ -1,10 +1,30 @@
 page-home {
+    .marco1 {
+        background-image: url('/assets/imgs/marco1.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100% !important;
+        background-attachment: fixed;
+    }
+    .btnMenu {
+        padding: 25px;
+        font-size: 16px;
+    }
+
+
+
+
+    .fondo{
+        background-color: #911206;
+        color : white;
+    }
     .card {
         margin: 0px;
         width: 100%;
+        border-radius:5px 5px 5px 5px;
     }
     ion-card-header {
         border-bottom: 1px solid #ccc;
+        text-align: center;
     }
     .left{
         float: left;
@@ -13,8 +33,8 @@ page-home {
         float: right;
     }
     #tabs .toolbar-background-md {
-        background-color: #000;
-        color: #fff;
+        background-color: white;
+        color: red;
     }
     .address-text{
         text-align: center;

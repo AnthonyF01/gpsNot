@@ -1,0 +1,79 @@
+page-gpsnot {
+  .marco1 {
+      background-image: url('/assets/imgs/marco1.png');
+      background-repeat: no-repeat;
+      background-size: 100% 100% !important;
+      background-attachment: fixed;
+  }
+  .card-header-md {
+      font-size: 1.6rem;
+      color: #911206;
+      padding: 0px;
+      font-weight: bold;
+  }
+  .card-title-md {
+      color: #911206;
+  }
+  .text-input-md {
+      text-align: center; 
+  }
+  .lblCed {
+      color: #911206;
+      font-weight: bold;
+      font-size: 15px;
+  }
+  .select-md .select-placeholder{
+    color: #ca5e54;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  .select-text {
+    color: #911206;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .select-md .select-icon {
+    margin-right: 15px;
+  }
+  
+
+
+  .fondo{
+      background-color: #911206;
+      color : white;
+  }
+  .card {
+      margin: 0px;
+      width: 100%;
+      border-radius:15px 15px 15px 15px;
+  }
+  .card-md {
+      border: 1px solid #ccc;
+  }
+  ion-card-header {
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+  }
+  .left{
+      float: left;
+  }
+  .right{
+      float: right;
+  }
+  #tabs .toolbar-background-md {
+      background-color: white;
+      color: red;
+  }
+  .address-text{
+      text-align: center;
+      font-size: 20px;
+  }
+  .watch-text{
+      font-size: 18px;
+  }
+  .select{
+      max-width: 100% !important;
+      border: 1px solid #ccc;
+      border-radius: 15px 15px 15px 15px;
+  }
+}
